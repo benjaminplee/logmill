@@ -3,7 +3,7 @@ Android log viewer
 
 ## Versioning
 
-The logmill  project uses [SemVer](http://semver.org/) for versioning and tracks changes in the [CHANGELOG.md](CHANGELOG.md) file. Versions available can also be found as Git [tags](/tags).
+The logmill  project uses [SemVer](http://semver.org/) for versioning and tracks changes in the [CHANGELOG.md](CHANGELOG.md) file. Versions available can also be found as Git [releases](releases).
 
 ## Authors
 
