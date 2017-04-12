@@ -1,4 +1,4 @@
-package com.yardspoon.logmill.screen.main;
+package com.yardspoon.logmill.screen.viewer;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,14 +11,14 @@ import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
 
-public class MainActivity extends AppCompatActivity implements MainContract.View {
+public class ViewerActivity extends AppCompatActivity implements ViewerContract.View {
 
-    @Inject MainContract.Presenter presenter;
+    @Inject ViewerContract.Presenter presenter;
 
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_viewer);
 
         // NOTE: Temporary stand-in
         findViewById(R.id.pickAppFab).setOnClickListener(new View.OnClickListener() {

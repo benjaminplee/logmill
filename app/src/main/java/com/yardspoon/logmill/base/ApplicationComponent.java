@@ -10,10 +10,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         BuildersModule.class})
 public interface ApplicationComponent {
 
-    @Component.Builder
-    interface Builder {
-        @BindsInstance
-        Builder application(LogMillApplication application);
+    @Component.Builder interface Builder {
+        @BindsInstance Builder application(LogMillApplication application);
 
         ApplicationComponent build();
     }

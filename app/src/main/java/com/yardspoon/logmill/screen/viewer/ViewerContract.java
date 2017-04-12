@@ -1,7 +1,7 @@
-package com.yardspoon.logmill.screen.main;
+package com.yardspoon.logmill.screen.viewer;
 
 
-public interface MainContract {
+public interface ViewerContract {
     interface View {
         void showLogs();
     }

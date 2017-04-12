@@ -3,8 +3,8 @@ package com.yardspoon.logmill.base;
 
 import android.app.Activity;
 
-import com.yardspoon.logmill.screen.main.MainSubComponent;
-import com.yardspoon.logmill.screen.main.MainActivity;
+import com.yardspoon.logmill.screen.viewer.ViewerSubComponent;
+import com.yardspoon.logmill.screen.viewer.ViewerActivity;
 
 import dagger.Binds;
 import dagger.Module;
@@ -16,6 +16,6 @@ import dagger.multibindings.IntoMap;
 public abstract class BuildersModule {
     @Binds
     @IntoMap
-    @ActivityKey(MainActivity.class)
-    abstract AndroidInjector.Factory<? extends Activity> bindActivityInjectorFactory(MainSubComponent.Builder builder);
+    @ActivityKey(ViewerActivity.class)
+    abstract AndroidInjector.Factory<? extends Activity> bindActivityInjectorFactory(ViewerSubComponent.Builder builder);
 }

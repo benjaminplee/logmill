@@ -3,15 +3,14 @@ package com.yardspoon.logmill.base;
 
 import android.content.Context;
 
-import com.yardspoon.logmill.screen.main.MainSubComponent;
+import com.yardspoon.logmill.screen.viewer.ViewerSubComponent;
 
 import dagger.Module;
 import dagger.Provides;
 
-@Module(subcomponents = {MainSubComponent.class})
+@Module(subcomponents = {ViewerSubComponent.class})
 public class ApplicationModule {
-    @Provides
-    Context provideContext(LogMillApplication application) {
+    @Provides Context provideContext(LogMillApplication application) {
         return application.getApplicationContext();
     }
 }
