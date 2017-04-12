@@ -14,8 +14,7 @@ import dagger.multibindings.IntoMap;
 
 @Module
 public abstract class ScreenBuilderModule {
-    @Binds
-    @IntoMap
+    @Binds @IntoMap
     @ActivityKey(ViewerActivity.class)
     abstract AndroidInjector.Factory<? extends Activity> bindActivityInjectorFactory(ViewerSubComponent.Builder builder);
 }
