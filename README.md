@@ -13,3 +13,9 @@ The logmill  project uses [SemVer](http://semver.org/) for versioning and tracks
 
 This project is licensed under the [Apache 2 License](LICENSE) Copyright 2017 Benjamin P Lee.
 
+## Thanks
+
+A special thanks to the following useful links, posts, libraries, and tools:
+
+* https://material.io/icons/#ic_find_replace
+* https://material.io/color/
