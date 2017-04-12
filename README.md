@@ -19,3 +19,4 @@ A special thanks to the following useful links, posts, libraries, and tools:
 
 * https://material.io/icons/#ic_find_replace
 * https://material.io/color/
+* https://android.jlelse.eu/android-and-dagger-2-10-androidinjector-5e9c523679a3
