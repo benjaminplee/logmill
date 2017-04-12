@@ -1,4 +1,4 @@
-package com.yardspoon.logmill.base;
+package com.yardspoon.logmill.screen;
 
 
 import android.app.Activity;
@@ -13,7 +13,7 @@ import dagger.android.AndroidInjector;
 import dagger.multibindings.IntoMap;
 
 @Module
-public abstract class BuildersModule {
+public abstract class ScreenBuilderModule {
     @Binds
     @IntoMap
     @ActivityKey(ViewerActivity.class)
