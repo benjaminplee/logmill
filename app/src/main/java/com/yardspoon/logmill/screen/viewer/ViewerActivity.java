@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.yardspoon.logmill.R;
+import com.yardspoon.logmill.models.Logcat;
 
 import javax.inject.Inject;
 
@@ -30,8 +31,8 @@ public class ViewerActivity extends AppCompatActivity implements ViewerContract.
     }
 
     @Override
-    public void showLogs() {
+    public void showLogs(Logcat logcat) {
         // NOTE: Temporary stand-in
-        Toast.makeText(this, "Showing Logs", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, logcat.getLogs().get(0), Toast.LENGTH_LONG).show();
     }
 }
