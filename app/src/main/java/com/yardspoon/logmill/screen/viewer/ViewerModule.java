@@ -1,12 +1,14 @@
 package com.yardspoon.logmill.screen.viewer;
 
 
-import dagger.Binds;
+import com.yardspoon.logmill.repository.LogcatRepository;
+
 import dagger.Module;
+import dagger.Provides;
 
 @Module
-public abstract class ViewerModule {
-    @Binds abstract ViewerContract.View provideView(ViewerActivity activity);
-
-    @Binds abstract ViewerContract.Presenter providesPresenter(ViewerPresenter presenter);
+public class ViewerModule {
+    @Provides ViewerContract.Presenter providesPresenter(ViewerActivity activity, LogcatRepository repository) {
+        return new ViewerPresenter(activity, repository);
+    }
 }

@@ -1,39 +1,49 @@
 package com.yardspoon.logmill.screen.viewer;
 
+import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.yardspoon.logmill.R;
+import com.yardspoon.logmill.base.ApplicationComponent;
+import com.yardspoon.logmill.base.LogMillApplication;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 
-import static junit.framework.Assert.assertEquals;
+import it.cosenonjaviste.daggermock.DaggerMockRule;
+
+import static org.mockito.Mockito.verify;
 
 @RunWith(AndroidJUnit4.class)
 public class ViewerActivityInstrumentedTest {
 
-    @Rule
-    public ActivityTestRule<ViewerActivity> rule = new ActivityTestRule<>(ViewerActivity.class);
+    @Rule public ActivityTestRule<ViewerActivity> activityRule = new ActivityTestRule<>(ViewerActivity.class);
+    @Rule public DaggerMockRule<ApplicationComponent> mockDIRule = new DaggerMockRule<>(ApplicationComponent.class).set(new DaggerMockRule.ComponentSetter<ApplicationComponent>() {
+        @Override public void setComponent(ApplicationComponent component) {
+            component.inject((LogMillApplication) InstrumentationRegistry.getInstrumentation().getTargetContext().getApplicationContext());
+        }
+    });
+
+    @Mock ViewerPresenter mockViewerPresenter;
 
     private ViewerActivity testObject;
 
     @Before
     public void setup() {
-        testObject = rule.getActivity();
+        testObject = activityRule.getActivity();
     }
 
     @Test
     public void fabClickLoadsLogsFromPresenter() {
         View fab = testObject.findViewById(R.id.pickAppFab);
-        RecyclerView logList = (RecyclerView) testObject.findViewById(R.id.logList);
 
         fab.callOnClick();
 
-        assertEquals(1000, logList.getAdapter().getItemCount());
+        verify(mockViewerPresenter).loadLogs();
     }
 }
