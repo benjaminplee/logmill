@@ -16,6 +16,7 @@ import dagger.android.AndroidInjection;
 public class ViewerActivity extends AppCompatActivity implements ViewerContract.View {
 
     @Inject ViewerContract.Presenter presenter;
+    
     private RecyclerView logListRecycler;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,6 @@ public class ViewerActivity extends AppCompatActivity implements ViewerContract.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewer);
 
-        // NOTE: Temporary stand-in
         findViewById(R.id.pickAppFab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
