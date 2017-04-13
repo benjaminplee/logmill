@@ -15,7 +15,10 @@ public class LogMillApplication extends Application implements HasDispatchingAct
     @Override
     public void onCreate() {
         super.onCreate();
+        setupDependencyInjection();
+    }
 
+    void setupDependencyInjection() {
         DaggerApplicationComponent
                 .builder()
                 .application(this)
