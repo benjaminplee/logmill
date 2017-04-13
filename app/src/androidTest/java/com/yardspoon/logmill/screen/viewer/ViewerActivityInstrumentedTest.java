@@ -1,33 +1,27 @@
 package com.yardspoon.logmill.screen.viewer;
 
-import android.support.test.InstrumentationRegistry;
+import android.support.test.annotation.UiThreadTest;
 import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.yardspoon.logmill.R;
-import com.yardspoon.logmill.base.ApplicationComponent;
-import com.yardspoon.logmill.base.LogMillApplication;
+import com.yardspoon.logmill.models.Logcat;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import it.cosenonjaviste.daggermock.DaggerMockRule;
-
+import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 
-@RunWith(AndroidJUnit4.class)
+@RunWith(MockitoJUnitRunner.class)
 public class ViewerActivityInstrumentedTest {
 
     @Rule public ActivityTestRule<ViewerActivity> activityRule = new ActivityTestRule<>(ViewerActivity.class);
-    @Rule public DaggerMockRule<ApplicationComponent> mockDIRule = new DaggerMockRule<>(ApplicationComponent.class).set(new DaggerMockRule.ComponentSetter<ApplicationComponent>() {
-        @Override public void setComponent(ApplicationComponent component) {
-            component.inject((LogMillApplication) InstrumentationRegistry.getInstrumentation().getTargetContext().getApplicationContext());
-        }
-    });
 
     @Mock ViewerPresenter mockViewerPresenter;
 
@@ -36,6 +30,7 @@ public class ViewerActivityInstrumentedTest {
     @Before
     public void setup() {
         testObject = activityRule.getActivity();
+        testObject.presenter = mockViewerPresenter;
     }
 
     @Test
@@ -45,5 +40,17 @@ public class ViewerActivityInstrumentedTest {
         fab.callOnClick();
 
         verify(mockViewerPresenter).loadLogs();
+    }
+
+    @Test
+    @UiThreadTest
+    public void showsLogsInRecycler() {
+        RecyclerView recycler = (RecyclerView) testObject.findViewById(R.id.log_list);
+
+        Logcat logcat = new Logcat();
+
+        testObject.showLogs(logcat);
+
+        assertEquals(logcat.getLogs().size(), recycler.getAdapter().getItemCount());
     }
 }

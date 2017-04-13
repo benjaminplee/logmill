@@ -27,16 +27,20 @@ public class ViewerActivity extends AppCompatActivity implements ViewerContract.
         findViewById(R.id.pickAppFab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.loadLogs();
+                getPresenter().loadLogs();
             }
         });
 
-        logListRecycler = (RecyclerView) findViewById(R.id.logList);
+        logListRecycler = (RecyclerView) findViewById(R.id.log_list);
         logListRecycler.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
     public void showLogs(Logcat logcat) {
         logListRecycler.setAdapter(new LogListAdapter(logcat.getLogs()));
+    }
+
+    public ViewerContract.Presenter getPresenter() {
+        return presenter;
     }
 }
