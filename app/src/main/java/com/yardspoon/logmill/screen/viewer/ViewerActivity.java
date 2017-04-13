@@ -2,8 +2,9 @@ package com.yardspoon.logmill.screen.viewer;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
 import com.yardspoon.logmill.R;
 import com.yardspoon.logmill.models.Logcat;
@@ -15,6 +16,7 @@ import dagger.android.AndroidInjection;
 public class ViewerActivity extends AppCompatActivity implements ViewerContract.View {
 
     @Inject ViewerContract.Presenter presenter;
+    private RecyclerView logListRecycler;
 
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
@@ -28,11 +30,13 @@ public class ViewerActivity extends AppCompatActivity implements ViewerContract.
                 presenter.loadLogs();
             }
         });
+
+        logListRecycler = (RecyclerView) findViewById(R.id.logList);
+        logListRecycler.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
     public void showLogs(Logcat logcat) {
-        // NOTE: Temporary stand-in
-        Toast.makeText(this, logcat.getLogs().get(0), Toast.LENGTH_LONG).show();
+        logListRecycler.setAdapter(new LogListAdapter(logcat.getLogs()));
     }
 }
