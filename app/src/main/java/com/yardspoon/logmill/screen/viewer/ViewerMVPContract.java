@@ -3,7 +3,7 @@ package com.yardspoon.logmill.screen.viewer;
 
 import com.yardspoon.logmill.models.Logcat;
 
-public interface ViewerContract {
+public interface ViewerMVPContract {
     interface View {
         void showLogs(Logcat logcat);
     }

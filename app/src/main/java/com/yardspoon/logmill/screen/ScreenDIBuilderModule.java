@@ -3,7 +3,7 @@ package com.yardspoon.logmill.screen;
 
 import android.app.Activity;
 
-import com.yardspoon.logmill.screen.viewer.ViewerSubComponent;
+import com.yardspoon.logmill.screen.viewer.ViewerDISubComponent;
 import com.yardspoon.logmill.screen.viewer.ViewerActivity;
 
 import dagger.Binds;
@@ -13,8 +13,8 @@ import dagger.android.AndroidInjector;
 import dagger.multibindings.IntoMap;
 
 @Module
-public abstract class ScreenBuilderModule {
+public abstract class ScreenDIBuilderModule {
     @Binds @IntoMap
     @ActivityKey(ViewerActivity.class)
-    abstract AndroidInjector.Factory<? extends Activity> bindActivityInjectorFactory(ViewerSubComponent.Builder builder);
+    abstract AndroidInjector.Factory<? extends Activity> bindActivityInjectorFactory(ViewerDISubComponent.Builder builder);
 }

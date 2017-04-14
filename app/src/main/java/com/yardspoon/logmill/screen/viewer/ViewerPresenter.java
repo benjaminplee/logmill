@@ -3,12 +3,12 @@ package com.yardspoon.logmill.screen.viewer;
 
 import com.yardspoon.logmill.repository.LogcatRepository;
 
-public class ViewerPresenter implements ViewerContract.Presenter {
+public class ViewerPresenter implements ViewerMVPContract.Presenter {
 
-    private ViewerContract.View view;
+    private ViewerMVPContract.View view;
     private LogcatRepository repository;
 
-    public ViewerPresenter(ViewerContract.View view, LogcatRepository repository) {
+    public ViewerPresenter(ViewerMVPContract.View view, LogcatRepository repository) {
         this.view = view;
         this.repository = repository;
     }

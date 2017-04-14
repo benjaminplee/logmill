@@ -19,7 +19,7 @@ public class LogMillApplication extends Application implements HasDispatchingAct
     }
 
     void setupDependencyInjection() {
-        DaggerApplicationComponent
+        DaggerApplicationDIComponent
                 .builder()
                 .application(this)
                 .build()

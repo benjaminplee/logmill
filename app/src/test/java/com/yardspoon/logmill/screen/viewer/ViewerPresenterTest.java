@@ -15,7 +15,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class ViewerPresenterTest {
 
-    @Mock ViewerContract.View view;
+    @Mock ViewerMVPContract.View view;
     @Mock LogcatRepository repository;
 
     private ViewerPresenter testObject;
