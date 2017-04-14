@@ -6,4 +6,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
-- Base Application
+- Base Application and foundation
+- Log viewer screen
