@@ -16,7 +16,7 @@ import dagger.android.AndroidInjection;
 public class ViewerActivity extends AppCompatActivity implements ViewerContract.View {
 
     @Inject ViewerContract.Presenter presenter;
-    
+
     private RecyclerView logListRecycler;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class ViewerActivity extends AppCompatActivity implements ViewerContract.
         logListRecycler.setAdapter(new LogListAdapter(logcat.getLogs()));
     }
 
-    public ViewerContract.Presenter getPresenter() {
+    private ViewerContract.Presenter getPresenter() {
         return presenter;
     }
 }

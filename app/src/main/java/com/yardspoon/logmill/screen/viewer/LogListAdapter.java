@@ -31,11 +31,11 @@ public class LogListAdapter extends RecyclerView.Adapter<LogListAdapter.ViewHold
         return logs.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
-        public final TextView text;
+        final TextView text;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
 
             text = (TextView) itemView.findViewById(R.id.log_text);
