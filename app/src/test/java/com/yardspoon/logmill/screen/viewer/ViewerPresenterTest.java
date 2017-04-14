@@ -26,12 +26,9 @@ public class ViewerPresenterTest {
     }
 
     @Test
-    public void loadedLogcatIsPassedToView() throws Exception {
-        Logcat value = new Logcat();
-        when(repository.load()).thenReturn(value);
-
+    public void delegatesToLoadLogsToRepository() throws Exception {
         testObject.loadLogs();
 
-        verify(view).showLogs(value);
+        verify(repository).load();
     }
 }

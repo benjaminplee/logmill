@@ -2,6 +2,11 @@ package com.yardspoon.logmill.screen.viewer;
 
 
 import com.yardspoon.logmill.repository.LogcatRepository;
+import com.yardspoon.logmill.repository.RepositoryStatus;
+
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+
 
 public class ViewerPresenter implements ViewerMVPContract.Presenter {
 
@@ -15,6 +20,27 @@ public class ViewerPresenter implements ViewerMVPContract.Presenter {
 
     @Override
     public void loadLogs() {
-        view.showLogs(repository.load());
+        repository.load()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<RepositoryStatus>() {
+
+                    @Override public void onCompleted() {
+
+                    }
+
+                    @Override public void onError(Throwable e) {
+                        view.problemLoadingLogs();
+                    }
+
+                    @Override public void onNext(RepositoryStatus repositoryStatus) {
+                        if (RepositoryStatus.SUCCESS.equals(repositoryStatus)) {
+                            view.logsLoaded();
+                        } else {
+                            view.problemLoadingLogs();
+                        }
+                    }
+                });
+
+        view.loading();
     }
 }

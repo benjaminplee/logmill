@@ -40,6 +40,18 @@ public class ViewerActivity extends AppCompatActivity implements ViewerMVPContra
         logListRecycler.setAdapter(new LogListAdapter(logcat.getLogs()));
     }
 
+    @Override public void problemLoadingLogs() {
+
+    }
+
+    @Override public void logsLoaded() {
+
+    }
+
+    @Override public void loading() {
+
+    }
+
     private ViewerMVPContract.Presenter getPresenter() {
         return presenter;
     }
